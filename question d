@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+double x=0.0;
+float f;
+while(x>=0&& x<=5){
+
+     f=(2*x*sin(x))+ cos(x)+((4*x)+3)/(3* pow(x,2)+(2*x)+4);
+         printf("x is %.1lf\t",x);
+         printf("f(x) is %.2f\n",f);
+     x=x+0.5;
+}
+     return 0;
+}
+-for loop-
+#include <stdio.h>
+#include <math.h>
+int main() {
+     double x=0.0;
+     float f;
+     for(x;x<=5.0;x=x+0.5){
+
+         f=(2*x*sin(x))+ cos(x)+((4*x)+3)/(3* pow(x,2)+(2*x)+4);
+         printf("x is %.1lf\t",x);
+         printf("f(x) is %.2f\n",f);
+
+     }
+     return 0;
+}
