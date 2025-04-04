@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+#define BASE 30
+#define MIDDLE 80
+#define HIGH 130
+
+int main() {
+double x,bill;
+     printf("Enter the number of minutes of talk:");
+     scanf("%lf",&x);
+     if(x<=BASE)
+         bill=BASE*0.90;
+     if (BASE < x && x<BASE)
+         bill = x * 0.90;
+     if(MIDDLE<x&& x<HIGH)
+         bill=x*0.75;
+     if(x>HIGH)
+         bill=x*0.60;
+
+     printf("Total amount you need to pay is: %.2f",bill);
+
+
+     return 0;
+}
