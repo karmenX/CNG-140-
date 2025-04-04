@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+int input,denominator=1;
+float e=1.0;
+    printf("Enter a number:");
+    scanf("%d",&input);
+    for(int i=1; i<=input; i++){
+        denominator=denominator*i;
+        printf("%d\n",denominator);
+        e+=(1.0/denominator);
+
+    }
+    printf("e is: %.2f",e);
+
+    return 0;
+}
