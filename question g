@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main() {
+  int num,rem=0,result=0,place=1;
+    printf("Enter  a decimal number: ");
+    scanf("%d",&num);
+    printf("Digits in reverse order: ");
+    do {
+        rem=num%10;
+        printf("%d",rem);
+        num/=10;
+    }
+    while(num);
+
+    return 0;
+}
