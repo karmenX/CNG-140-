@@ -1,0 +1,25 @@
+#include<stdio.h>
+#define SIZE 100
+#include <stdlib.h>
+
+
+int main(){
+
+    char message[SIZE];
+
+    printf("Enter your string: ");
+    gets(message);
+    FILE *stream;
+
+    stream= fopen("test.txt","w");
+    if(stream==NULL){
+        printf("Failed to open the file\n");
+        exit(1);
+    }
+
+    fputs(message,stream);
+
+    fclose(stream);
+
+    return 0;
+}
