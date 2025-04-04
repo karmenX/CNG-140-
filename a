@@ -1,0 +1,31 @@
+#include<stdio.h>
+int func(char message[]);
+
+int main(){
+
+    char message[80];
+    printf("Please enter a string: ");
+    gets(message);
+    int vowels=0;
+    vowels=func(message);
+    printf("Your string has %d vowels",vowels);
+    return 0;
+}
+int func(char message[]){
+    int i=0,vowels=0;
+    while(message[i]){
+        if(message[i]=='a')
+            vowels++;
+        if(message[i]=='e')
+            vowels++;
+        if(message[i]=='o')
+            vowels++;
+        if(message[i]=='i')
+            vowels++;
+        if(message[i]=='u')
+            vowels++;
+        i++;
+    }
+    return vowels;
+
+}
