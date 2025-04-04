@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Rectangle{
+    int x1,y1,x2,y2;
+};
+struct Point {
+    int x, y;
+};
+
+void populate(struct Rectangle *array);
+int area(int a,int b, int c, int d);
+void compute_center(struct Rectangle *rect, struct Point *center);
+
+int main() {
+    
+    struct Rectangle rec;
+    struct Point center;
+    int areavalue;
+
+    populate(&rec);
+    printf("upper left x coordinate is %d and y coordinate is %d\n",rec.x1,rec.y1);
+    printf("lower right x coordinate is %d and y coordinate is %d\n",rec.x2,rec.y2);
+
+    areavalue=area(rec.x1,rec.x2,rec.y1,rec.y2);
+    printf("area of the rectangle is %d \n",areavalue);
+    compute_center(&rec, &center);
+    printf("Center of the rectangle is at (%d, %d)\n", center.x, center.y);
+    
+    return 0;
+}
+
+void populate(struct Rectangle *array){
+    char filename[]="rectangle.txt";
+    FILE *stream;
+    stream= fopen(filename,"r");
+    if(stream==NULL){
+        printf("Failed to open the file.\n");
+        exit(1);
+    }
+
+    while(fscanf(stream,"%d %d %d %d",&array->x1,&array->y1,&array->x2,&array->y2)!=EOF){
+    }
+    fclose(stream);
+
+}
+int area(int a, int b, int c, int d){
+    int area;
+    area=abs(b-a)*abs(d-c);
+    return area;
+}
+void compute_center(struct Rectangle *rect, struct Point *center) {
+    center->x = (rect->x1 + rect->x2) / 2; // Truncation happens naturally with integer division
+    center->y = (rect->y1 + rect->y2) / 2; // Truncation happens naturally with integer division
+}
