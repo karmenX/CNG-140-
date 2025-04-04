@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+  int account,amount,term;
+  float rate,interest,payment;
+
+
+  while(account!=0){
+      printf("Enter customer's account number(0 to end):");
+      scanf("%d",&account);
+      if(account==0)
+          break;
+      printf("Enter the mortgage amount:\n");
+      scanf("%d",&amount);
+      printf("Enter the mortgage term (in months):\n");
+      scanf("%d",&term);
+      printf("Enter the interest rate:\n");
+      scanf("%f",&rate);
+      interest=amount*rate*term;
+      payment=(amount+interest)/term;
+
+      printf("Total interest is %.1f\n",interest);
+
+      printf("Monthly payment: %.2f\n",payment);
+      if(payment<0)
+          printf("Not possible!\n");
+      if(payment<300&&payment>0)
+          printf("Too low!\n");
+      if(payment<1000&&payment>301)
+          printf("Medium!\n");
+      if(payment>1000)
+          printf("Too high!\n");
+
+  }
+
+
+    return 0;
+}
