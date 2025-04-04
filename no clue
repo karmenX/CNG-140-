@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() {
+    int number,count=1,squares;
+    printf("Please enter n:");
+    scanf("%d",&number);
+    printf("Even squares are:\n");
+    do {
+        squares = count*count;
+        if (squares% 2 == 0)
+            printf("%d\n", squares);
+        count++;
+    }
+    while(squares<=number);
+    return 0;
+}
