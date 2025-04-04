@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <math.h>
+int digit(int, int);
+
+int main() {
+     int n,k;
+     printf("Enter n: ");
+     scanf(" %d",&n);
+     printf("Enter k: ");
+     scanf(" %d",&k);
+     digit(n,k);
+     return 0;
+}
+int digit(int n, int k){
+     int remainder;
+         n /= pow(10,k-1);
+         remainder = n % 10;
+         if(remainder==0)
+             printf("The number of digits in %d is less than %d!",n,k);
+         printf("%d. digit from the right is %d\n",k, remainder);
+
+     return remainder;
+}
