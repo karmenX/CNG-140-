@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+int input;
+int f0=0,f1=1,fn,position;
+    printf("Enter a number: ");
+    scanf("%d",&input);
+    if(input==f0)
+        printf("The Fibonacci number at position %d: %d",input,f0);
+    else if(input==1)
+        printf("The Fibonacci number at position %d: %d",input,f1);
+    else{
+        for(int i=2; i<=input; i++){
+            fn=f0+f1;
+            f0=f1;
+            f1=fn;
+        }
+        printf("The Fibonacci number at position %d: %d",input,f1);
+    }
+
+    return 0;
+}
