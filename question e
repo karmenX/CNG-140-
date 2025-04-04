@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+void printBinaryReversed(int number) {
+    if(number > 1) {
+        printBinaryReversed(number/2);
+    }
+    printf("%d", number % 2);
+}
+
+int main(void) {
+    int number;
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    if (number == 0) {
+        printf("Binary representation: 0\n");
+    } else {
+        printf("Binary representation: ");
+        printBinaryReversed(number);  // Print in reverse order
+        printf("\n");
+    }
+
+    return 0;
+}
