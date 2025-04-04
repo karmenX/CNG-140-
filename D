@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+double m,v,d;
+     printf("Enter mass (M): \n");
+     scanf("%lf",&m);
+     printf("Enter volume (V): \n");
+     scanf("%lf",&v);
+     d=m/v;
+     printf("Density is: %.2lf\n",d);
+     if(d>2)
+         printf("Your substance is solid!");
+     if(d<2&&d>1)
+         printf("Your substance is liquid!");
+     if(d<1)
+         printf("Your substance is gas!");
+     return 0;
+}
