@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    int cashier,gross_sales,weeks,salary,sum,total=0;
+    srand(time(NULL));
+
+    printf("Supermarket simulator\n"
+           "Enter the simulation data:\n");
+    do{
+        printf("How many cashiers you have?\n");
+        scanf("%d",&cashier);
+        if(cashier<0){
+            printf("Sorry, your number of cashiers has to be larger than 0!\n");
+            break;}
+        do {
+            printf("How many weeks in a month you have?\n");
+            scanf("%d",weeks);
+            if(weeks<4||weeks>6){
+                printf("Sorry, your number of weeks has to be between 4-6!");
+                break;}
+        }while(weeks<4 || weeks>6);
+
+        for(int i=1; i<=cashier; i++) {
+            sum=0;
+            for (int j = 1; j <= weeks; j++) {
+                gross_sales = 1000 + rand() % 6000;
+                printf("Cashier %d sales in week %d: %d",i,j,gross_sales);
+                salary= 2000+ gross_sales*(1/10);
+                printf("Week %d salary: %d",i,salary);
+                sum=sum+salary;
+
+            }
+            printf("Total salary of cashier %d in a month: %d",i,sum);
+            total=total+sum;
+        }
+        printf("Total salary of all cashiers: %d \n",total);
+
+    }
+    while(cashier>0);
+    return 0;
+}
