@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+int input;
+int n=1;
+    printf("Enter a number:");
+    scanf("%d",&input);
+    if(input==0)
+        printf("%d! is: 1 ",input);
+    else{
+        for(int i=1; i<=input; i++){
+            n=n*i;
+        }
+        printf("%d! is: %d ",input,n);
+    }
+
+    return 0;
+}
