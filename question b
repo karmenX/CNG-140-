@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main() {
+int n,sum=0;
+for(n;n<1001;n++)
+     sum=sum+n;
+     printf("sum is : %d",sum);
+     return 0;
+}
