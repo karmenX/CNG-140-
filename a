@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void swap (int *p, int *q);
+
+int main(){
+
+    int p,q;
+    printf("Enter a value for p: ");
+    scanf("%d",&p);
+
+    printf("Enter a value for q: ");
+    scanf("%d",&q);
+
+    swap(&p, &q);
+    printf("p: %d\t q:%d",p,q);
+
+
+
+    return 0;
+}
+void swap (int *p, int *q){
+
+    int temp;
+    temp=*p;
+    *p=*q;
+    *q=temp;
+    
+}
