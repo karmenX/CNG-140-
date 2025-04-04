@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+int isPalindrome(int number){
+int reversed=0;
+int original=number;
+int remainder;
+
+while(number>0){
+    remainder = number % 10;  // Get the last digit
+    reversed = reversed * 10 + remainder;  // Build the reversed number
+    number /= 10;  // Remove the last digit
+}
+
+return original==reversed;}
+
+int main() {
+    int x;
+    printf("Please enter how many digits you wanna see: ");
+    scanf("%d",&x);
+    int start,end;
+    start= pow(10,x-1);
+    end= pow(10,x)-1;
+
+    for(int i=start; i<=end;i++){
+        if(isPalindrome(i))
+            printf("%d\t",i);
+
+    }
+    return 0;
+}
