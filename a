@@ -1,0 +1,105 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 7
+
+struct Periodic{
+
+    int atomic_number;
+    char name[20];
+    char chemical_symbol[5];
+    char class[20];
+    float atomic_weight;
+    int electrons[SIZE];
+
+};
+
+void scan_element(struct Periodic *data);
+void print_element(struct Periodic *data);
+void store_element(struct Periodic *data);
+void read_element(struct Periodic *data);
+
+int main(){
+
+    struct Periodic data={0};
+
+    scan_element(&data);
+    print_element(&data);
+    store_element(&data);
+    read_element(&data);
+
+    return 0;
+
+}
+void scan_element(struct Periodic *data) {
+
+    printf("Atomic number: ");
+    scanf("%d",&data->atomic_number);
+    printf("Name: ");
+    scanf(" %s",data->name);
+    printf("Chemical symbol: ");
+    scanf("%s",data->chemical_symbol);
+    printf("Class: ");
+    scanf(" %[^\n]",data->class);
+    printf("Atomic weight:");
+    scanf("%f",&data->atomic_weight);
+    printf("Number of electrons:");
+    for(int i=0;i<SIZE;i++){
+        scanf("%d",&data->electrons[i]);
+    }
+
+}
+
+void print_element(struct Periodic *data){
+
+    printf("Atomic number: %d\n",data->atomic_number);
+    printf("Name: %s \n",data->name);
+
+    printf("Chemical symbol: %s\n",data->chemical_symbol);
+
+    printf("Class: %s\n",data->class);
+
+    printf("Atomic weight: %f\n",data->atomic_weight);
+
+    printf("Number of electrons:\n");
+    for(int i=0;i<SIZE;i++){
+        printf("%d ",data->electrons[i]);
+    }
+
+}
+void store_element(struct Periodic *data){
+
+    FILE *stream= fopen("periodic_table.txt","w");
+    if(stream==NULL){
+        printf("Failed to open the file.\n");
+        exit(1);
+    }
+
+    fprintf(stream,"%d\n%s\n%s\n%s\n%f\n",data->atomic_number,data->name,data->chemical_symbol,data->class,data->atomic_weight);
+    for(int i=0;i<SIZE;i++){
+        fprintf(stream,"%d\t",data->electrons[i]);
+    }
+
+    printf("periodic_table.txt created successfully.");
+
+    fclose(stream);
+
+}
+
+void read_element(struct Periodic *data){
+
+    FILE *stream= fopen("periodic_table.txt","r");
+    if(stream==NULL){
+        printf("Failed to open the file.\n");
+        exit(1);
+    }
+
+   fscanf(stream,"%d\n%s\n%s\n%s\n%f\n",&data->atomic_number,data->name,data->chemical_symbol,data->class,&data->atomic_weight);
+    for(int i=0;i<SIZE;i++){
+        fscanf(stream,"%d\t",&data->electrons[i]);
+    }
+
+    printf("periodic_table.txt read successfully.");
+
+    fclose(stream);
+
+}
