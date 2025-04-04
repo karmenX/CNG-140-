@@ -1,0 +1,21 @@
+//not done
+#include <stdio.h>
+#include <math.h>
+int main() {
+int year,day,month;
+int cyear,cday,cmonth;
+int age, max,target;
+     printf("Enter your birthday:");
+     scanf("%d / %d / %d",&day,&month,&year);
+     printf("Enter current date:");
+     scanf("%d / %d/ %d",&cday,&cmonth,&cyear);
+     age=cyear-year;
+     printf("You are %d years old\n",age);
+     max=220-age;
+     printf("Your maximum heart rate in beats per minute is %d \n",max);
+
+
+
+
+     return 0;
+}
