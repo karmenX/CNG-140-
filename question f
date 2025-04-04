@@ -1,0 +1,44 @@
+//not quite the wanted code but it works fine
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int test_result(int);
+float positive_percentage(int,int);
+void display_results(int, int, float);
+int main() {
+    int test,random,p;
+    srand(time(NULL));
+    test=1+ (int)rand()%100;
+    printf("Today you completed %d tests and the results are as follows:\n",test);
+    p=test_result(test);
+    positive_percentage(p,test);
+    display_results(p,test-p, positive_percentage(p,test));
+
+    return 0;
+}
+int test_result(int test){
+    int random;
+    int p = 0,n=0;
+for(int i=0;i<test;i++){
+    random=rand()%2;
+        if(random==1){
+            p++;
+            printf("Test %d: p \n",i+1);}
+        if(random==0){
+            n++;
+            printf("Test %d: n \n",i+1);}
+}
+
+    return p;
+}
+float positive_percentage(int p,int test){
+   float percentage;
+    percentage=(100*p)/test;
+    return percentage;
+}
+void display_results(int p, int n, float percentage){
+    printf("Total positive: %d\n",p);
+    printf("Total negatives: %d\n",n);
+    printf(" %% of positives: %.2f",percentage);
+}
