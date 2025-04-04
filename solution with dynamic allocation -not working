@@ -1,0 +1,150 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#define SIZE 50
+
+struct PhotoBook{
+
+
+    int size_of_the_photo;
+    char name_of_the_photo[SIZE];
+    char name_of_the_city[SIZE];
+};
+void load_photos(struct PhotoBook **data, int *count);
+void search_photos(struct PhotoBook *data, int count);
+void delete_photos(struct PhotoBook **data, int *count);
+void save_photos(struct PhotoBook *data,int *count);
+
+int main(){
+
+    struct PhotoBook *photo=NULL;
+    int initialized=0;
+    int option;
+    load_photos(&photo,&initialized);
+
+    do {
+        printf("----Menu----\n");
+        printf("1. Search Photos\n");
+        printf("2. Delete Photos\n");
+        printf("3. Exit\n");
+        printf("Enter your option: ");
+        scanf("%d", &option);
+
+        switch(option) {
+            case 1:
+                search_photos(photo, initialized);
+                break;
+            case 2:
+                delete_photos(&photo,&initialized);
+                break;
+            case 3:
+                save_photos(photo,&initialized);
+                printf("The photos.txt file has been updated successfully!\n");
+                free(photo);
+                exit(0);
+            default:
+                printf("Invalid option entered!\n");
+                break;
+        }
+    } while (option != 3);
+
+    return 0;
+}
+
+void load_photos(struct PhotoBook **data, int *count){
+
+    FILE *stream=fopen("photos.txt","r");
+    if(stream==NULL){
+        printf("Failed to open the file.\n");
+        exit(1);
+    }
+
+    *count=0;
+
+    struct PhotoBook temp;
+    *data=NULL;
+    while(fscanf(stream,"%s %d %s ",temp.name_of_the_photo,&temp.size_of_the_photo,temp.name_of_the_city)==3){
+        struct PhotoBook *new_data=(struct PhotoBook*) realloc(*data,sizeof (struct PhotoBook)*(*count+1));
+        if(new_data==NULL){
+            printf("Memory allocation failed.\n");
+            free(*data);
+            exit(1);
+        }
+        *data=new_data;
+        (*data)[*count]=temp;
+        (*count)++;
+
+    }
+
+    fclose(stream);
+
+}
+
+void search_photos(struct PhotoBook *data, int count){
+
+    int i,found=0;
+    char input[SIZE];
+    printf("Enter the city name:");
+    scanf("%s",input);
+
+    for(int k=0;input[k]!='\0';k++)
+        input[k]= tolower(input[k]);
+
+    for(i=0;i<count;i++) {
+        char city[SIZE];
+        strcpy(city,data[i].name_of_the_city);
+
+        for(int j=0;input[j]!='\0';j++)
+            city[j]= tolower(city[j]);
+
+        if (strcmp(city,input) == 0) {
+            found=1;
+            printf("Photos taken at %s are as follows:\n",input);
+            printf("%s\n", (data)[i].name_of_the_photo);
+            break;
+        }
+    }
+    if(!found)
+        printf("There is not any available photo taken at city %s\n",input);
+}
+
+void delete_photos(struct PhotoBook **data, int *count){
+
+    int i;
+    char photo_name[SIZE];
+    printf("Enter the photo name:");
+    scanf("%s",photo_name);
+
+    for(i=0;i<*count;i++) {
+
+        if (strcmp((*data[i]).name_of_the_photo,photo_name) != 0) {
+            printf("That image is not in your store so cannot delete!\n");
+            break;
+        } else {
+            printf("%s deleted from the PhotoBook!\n",(*data[i]).name_of_the_photo);
+            for(int j=i;j<*count-1;j++){
+                (*data)[j]=(*data)[j+1];
+                (*count)--;
+            }
+            *data= realloc(*data,sizeof(struct PhotoBook)*(*count-1));
+            printf("in delete photos func the last count is %d\n",*count);
+        }
+    }
+}
+void save_photos(struct PhotoBook *data,int *count) {
+
+    FILE *stream = fopen("photos.txt", "w");
+    if (stream == NULL) {
+        printf("Failed to open the file.\n");
+        exit(1);
+    }
+
+    for(int i=0;i<*count;i++) {
+        fprintf(stream, "%s %d %s \n", data[i].name_of_the_photo, data[i].size_of_the_photo, data[i].name_of_the_city);
+    }
+    printf("The photos.txt file has been updated successfully!\n");
+
+    fclose(stream);
+
+}
