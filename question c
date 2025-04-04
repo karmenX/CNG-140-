@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+int x,sum=0,counter;
+double average;
+     printf("Enter integers, 9999 to stop:");
+     scanf("%d",&x);
+while(x!=9999){
+     sum=sum+x;
+     printf("Enter integers, 9999 to stop:");
+     scanf("%d",&x);
+     counter++;
+     }
+average=sum/counter;
+     printf("The sum is %d ",sum);
+     printf("The average is %.2lf",average);
+     return 0;
+}
