@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int size, inner = 0;
+    printf("How many elements you want to store (n)?");
+    scanf("%d", &size);
+    int *array1, *array2;
+    array1 = (int *) malloc(sizeof(int) * size);
+    array2 = (int *) malloc(sizeof(int) * size);
+    if (array1 == NULL) {
+        printf("\nFailed to allocate array\n");
+        exit(1);
+    }
+    if (array2 == NULL) {
+        printf("\nFailed to allocate array\n");
+        exit(1);
+    }
+    for (int i = 0; i < size; i++) {
+        printf("Enter a value to be stored in the first array: ");
+        scanf("%d", &array1[i]);
+        printf("\n");
+    }
+    for (int i = 0; i < size; i++) {
+        printf("Enter a value to be stored in the second array: ");
+        scanf("%d", &array2[i]);
+        printf("\n");
+    }
+
+    for (int i = 0; i < size; i++) {
+        inner += array1[i] * array2[i];
+    }
+    printf("Result of inner product is: %d",inner);
+
+    return 0;
+}
