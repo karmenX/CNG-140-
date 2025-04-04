@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    int der=2,heart=3,ped=5,count=1;
+    int treated=0,untreated=0;
+    int dertreated=0,hearttreated=0,pedtreated=0;
+    char doctor;
+
+    while(1) {
+        printf("Type (d: dermatologist, h: heart surgeon, p: pediatrician, x: exit):");
+        scanf(" %c", &doctor);
+        if (doctor == 'x')
+            break;
+        switch (doctor) {
+            case 'd':
+                if (der > 0) {
+                    der--;
+                    treated++;
+                    dertreated++;
+                } else
+                    untreated++;
+                printf("Dermatologist %d treated, patient %d\n",dertreated,count);
+                break;
+            case 'p':
+                if (ped > 0) {
+                    ped--;
+                    treated++;
+                    pedtreated++;
+                } else
+                    untreated++;
+                printf("Pediatrician %d treated, patient %d\n",pedtreated,count);
+                break;
+            case 'h':
+                if (heart > 0) {
+                    heart--;
+                    treated++;
+                    hearttreated++;
+                } else
+                    untreated++;
+                printf("Heart surgeon %d treated, patient %d\n",hearttreated,count);
+                break;
+
+            default:
+                printf("Invalid code entered:");
+        }
+        count++;
+    }
+    printf("Treated patients: %d\n", treated);
+    printf("Untreated patients: %d\n", untreated);
+    return 0;
+}
