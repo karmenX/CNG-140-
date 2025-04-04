@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+#define BASE 30
+#define MIDDLE 80
+#define HIGH 130
+
+int main() {
+double bill;
+int h,m,s,temp;
+float a,x,i,g,taxes,total;
+     printf("Enter the hours, minutes and seconds of talk:");
+     scanf("%d %d %d",&h,&m,&s);
+     temp=(h*3600)+(m*60)+s;
+     printf("the total seconds of talk is: %d\n",temp);
+     for(temp; temp%8!=0;temp++){
+         if(temp%8==0)
+             temp=temp;
+
+     }
+     printf("the total second divisible by 8 is: %d\n",temp);
+     g=temp;
+     x=g/60;
+     i=g-(x*60);
+     a=x+i;
+     printf( "the g is : %f\n",g);
+     printf( "the x is : %f\n",x);
+     printf("the i is: %f\n",i);
+     printf("the a is: %f\n",a);
+
+
+     if(a<=BASE){
+         bill=BASE*0.90;
+         taxes=BASE*(0.9)*(0.08);}
+     if (BASE < a && a<MIDDLE){
+         bill = a * 0.90;
+         taxes=BASE*(0.9)*(0.08)+(a-(BASE*0.9))*0.18;}
+     if(MIDDLE<a && a<HIGH){
+         bill=a*0.75;
+         taxes=BASE*(0.9)*(0.08)+(a-(BASE*0.9))*0.18;}
+     if(a>HIGH){
+         bill=a*0.60;
+         taxes=BASE*(0.9)*(0.08)+(a-(BASE*0.9))*0.18;}
+
+     printf("Total amount you need to pay is: %.2f\n",bill);
+     printf("Taxes: %.2f\n",taxes);
+     total=bill+taxes;
+     printf("You need to pay in total: %.2f\n",total);
+
+     return 0;
+}
