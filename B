@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+int t;
+double p;
+     printf("Enter t value: ");
+     scanf("%d",&t);
+if(t<=3);
+p=20;
+if(t>3&&t<=6)
+     p=4*(t+2);
+if(t>6)
+     p=4*(pow(t,2)+(2*t));
+     printf("p(t) is: %.2f",p);
+     return 0;
+}
