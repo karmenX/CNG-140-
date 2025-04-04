@@ -1,0 +1,18 @@
+#include <stdio.h>
+int  isMultipleofGivenNumber(int first, int second){
+    if(first%second==0)
+        return 1;
+    else if(first%second!=0)
+        return 0;
+}
+
+int main() {
+int a,b;
+    printf("Enter two integers:" );
+    scanf("%d %d",&a,&b);
+    if(isMultipleofGivenNumber(a,b)==1)
+        printf("%d is multiple of %d",a,b);
+    else
+        printf("%d is not multiple of %d",a,b);
+    return 0;
+}
