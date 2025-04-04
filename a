@@ -1,0 +1,17 @@
+#include <stdio.h>
+void binary(int number){
+    if(number>1)
+        binary(number/2);
+    printf("%d",number%2);
+
+}
+int main(){
+
+    int input;
+    printf("Enter a positive integer: ");
+    scanf("%d",&input);
+    printf("Binary representation of %d is:",input);
+    binary(input);
+
+    return 0;
+}
