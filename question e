@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <math.h>
+void menu (void);//This will display the menu
+int add (int, int);//Takes two integers and returns their total
+int sub (int, int); //Takes two integers and returns their total
+int power (int, int); //Takes the power of a given number
+int multiply (int, int); //Multiples two integers
+
+int main() {
+    int value=0;
+    int integer;
+    char operation;
+    menu();
+
+    do{
+        printf("Enter the opreation and the number:");
+        scanf(" %c %d",&operation,&integer);
+    switch (operation) {
+        case '^':
+            value=power(value,integer);
+            printf("result so far is %d\n",value);
+            break;
+        case '+':
+            value=add(value,integer);
+            printf("result so far is %d\n",value);
+            break;
+        case '-':
+            value=sub(value,integer);
+            printf("result so far is %d\n",value);
+            break;
+        case '*':
+            value=multiply(value,integer);
+            printf("result so far is %d\n",value);
+            break;
+        default:
+            printf("\n");
+            break;
+    }
+    }
+    while(operation!='q');
+    printf("Final result is: %d ",value);
+
+    return 0;
+}
+void menu(){
+    printf("+ add\n"
+           "- subtract\n"
+           "* multiply\n"
+           "^ power\n"
+           "q quit\n");
+}
+int add (int a, int b){
+    return a+b;
+}
+int sub (int a, int b){
+    return a-b;
+}
+int power (int a, int b){
+    return pow(a,b);
+}
+int multiply (int a, int b){
+    return a*b;
+}
