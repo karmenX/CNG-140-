@@ -1,0 +1,14 @@
+#include <stdio.h>
+    int main(){
+
+        float number = 1.0;
+        float stepSize = 0.05;
+        while (number >=0.0)
+        {
+            printf("%f\n", number);
+            number = number - stepSize;
+        }
+
+
+    return 0;
+}
